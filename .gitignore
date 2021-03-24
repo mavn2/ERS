@@ -1,0 +1,8 @@
+/APP/ExpenseReimbursementSystem/target/
+/APP/ExpenseReimbursementSystem/.metadata/
+/APP/ExpenseReimbursementSystem/.settings/
+/APP/ExpenseReimbursementSystem/.classpath
+/APP/ExpenseReimbursementSystem/.project
+/APP/ExpenseReimbursementSystem/Target/
+/APP/Servers
+.*;

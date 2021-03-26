@@ -13,4 +13,4 @@ INSERT INTO ri_requests (apply_id, ri_status, ri_amount, ri_for)
 VALUES (1, 1, 100.00, 'travel'), (1, 1, 500.00, 'pizza'), (3, 1, 100.00, 'fraud');
 
 INSERT INTO ri_requests (apply_id, approve_id, ri_status, ri_amount, ri_for)
-VALUES (2, 3, 2, 10.00, 'taxi')
+VALUES (2, 3, 2, 10.00, 'taxi');

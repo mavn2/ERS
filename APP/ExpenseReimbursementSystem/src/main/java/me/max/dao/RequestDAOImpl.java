@@ -70,6 +70,25 @@ public class RequestDAOImpl implements RequestDAO {
 	}
 
 	@Override
+	public ArrayList<Request> getUserRequests(Connection con, int uId) throws SQLException {
+		ArrayList<Request> result = new ArrayList<>();
+
+		String sql = "SELECT * FROM ri_requests WHERE apply_id = ?;";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, uId);
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			Request entry = new Request(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getDouble(5),
+					rs.getString(6), rs.getDate(7));
+			result.add(entry);
+		}
+
+		return result;
+	}
+
+	@Override
 	public ArrayList<Request> getUserTypedRequests(Connection con, int uId, int type) throws SQLException {
 		ArrayList<Request> result = new ArrayList<>();
 
@@ -108,5 +127,4 @@ public class RequestDAOImpl implements RequestDAO {
 		}
 
 	}
-
 }

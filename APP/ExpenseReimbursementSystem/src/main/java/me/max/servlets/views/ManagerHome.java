@@ -39,9 +39,7 @@ public class ManagerHome extends HttpServlet {
 	
 	//Shared/ default request processing method 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
-		response.getWriter().append("Hello " + user.getFirstName());
+		response.sendRedirect("./manager.jsp");
 	}
 	
 

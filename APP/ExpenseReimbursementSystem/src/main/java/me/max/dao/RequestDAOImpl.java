@@ -92,7 +92,7 @@ public class RequestDAOImpl implements RequestDAO {
 	public ArrayList<Request> getUserTypedRequests(Connection con, int uId, int type) throws SQLException {
 		ArrayList<Request> result = new ArrayList<>();
 
-		String sql = "SELECT * FROM ri_requests WHERE apply_id = ? AND type = ?;";
+		String sql = "SELECT * FROM ri_requests WHERE apply_id = ? AND ri_status = ?;";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, uId);
@@ -125,6 +125,5 @@ public class RequestDAOImpl implements RequestDAO {
 		} else {
 			throw new SQLException("Error: request could not be updated");
 		}
-
 	}
 }

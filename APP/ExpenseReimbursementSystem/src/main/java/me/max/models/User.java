@@ -7,7 +7,7 @@ import me.max.dao.UserDAOImpl;
 import me.max.util.ConnectionUtil;
 
 public class User {
-	//Vars to hold user information
+	// Vars to hold user information
 	private int id;
 	private int role;
 	private String username;
@@ -15,8 +15,8 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	
-	//Constructor for adding all fields from db
+
+	// Constructor for adding all fields from db
 	public User(int id, int role, String username, String password, String firstName, String lastName, String email) {
 		super();
 		this.id = id;
@@ -27,19 +27,19 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 	}
-	
-	//Create a user object for use in the system
+
+	// Create a user object for use in the system
 	public static User loginUser(String username) throws Exception {
-		//Doing this here, as this method is the only time it's relevant
+		// Doing this here, as this method is the only time it's relevant
 		UserDAO ud = new UserDAOImpl();
-		
-		try(Connection con = ConnectionUtil.getConnection()){
+
+		try (Connection con = ConnectionUtil.getConnection()) {
 			User result = ud.getUserByUsername(con, username);
 			return result;
 		}
 	}
 
-	//Getters/setters for potentially user-editable fields
+	// Getters/setters for potentially user-editable fields
 
 	public String getPassword() {
 		return password;
@@ -72,8 +72,8 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	//Getters for read-only fields
+
+	// Getters for read-only fields
 	public int getId() {
 		return id;
 	}
@@ -86,7 +86,7 @@ public class User {
 		return username;
 	}
 
-	//hash, equals, toString
+	// hash, equals, toString
 
 	@Override
 	public int hashCode() {
@@ -101,7 +101,7 @@ public class User {
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

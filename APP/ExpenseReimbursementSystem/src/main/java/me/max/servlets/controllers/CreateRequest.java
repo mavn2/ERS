@@ -1,25 +1,31 @@
-package me.max.servlets.views;
+package me.max.servlets.controllers;
 
 import java.io.IOException;
+import java.sql.Connection;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import me.max.dao.RequestDAO;
+import me.max.dao.RequestDAOImpl;
+import me.max.models.User;
+import me.max.util.ConnectionUtil;
 
 /**
- * Servlet implementation class ManagerHome
+ * Servlet implementation class CreateRequest
  */
-public class ManagerHome extends HttpServlet {
+public class CreateRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private RequestDAO db;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerHome() {
+    public CreateRequest() {
         super();
-        // TODO Auto-generated constructor stub
+        this.db = new RequestDAOImpl();
     }
 
 	/**
@@ -36,12 +42,20 @@ public class ManagerHome extends HttpServlet {
 		processRequest(request, response);
 	}
 	
-	//Shared/ default request processing method 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/manager");
-		rd.forward(request, response);
+		// Get info required for db
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user");
+		int id = user.getId();
+		double amount = Double.parseDouble(request.getParameter("amount"));
+		String rFor = request.getParameter("for");
+		
+		try(Connection con = ConnectionUtil.getConnection()){
+			db.createRequest(con, id, amount, rFor);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
-	
 
 }
-

@@ -1,23 +1,21 @@
-package me.max.servlets.views;
+package me.max.servlets.controllers;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ManagerHome
+ * Servlet implementation class HandleRequest
  */
-public class ManagerHome extends HttpServlet {
+public class HandleRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManagerHome() {
+    public HandleRequest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,22 +24,16 @@ public class ManagerHome extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
-	
-	//Shared/ default request processing method 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/manager");
-		rd.forward(request, response);
-	}
-	
 
 }
-

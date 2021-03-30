@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="me.max.models.User" %>
+<%
+	User user = (User)session.getAttribute("user");
+	String fName = user.getFirstName();
+	int id = user.getId();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-testteststest
+<%out.print(fName); %>
 </body>
 </html>

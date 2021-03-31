@@ -45,18 +45,18 @@ public class RequestService {
 	@GET
 	@Path("/user/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getUserRequests(@PathParam("id") int id,   @DefaultValue("0") @QueryParam("type") int type) {
+	public String getUserRequests(@PathParam("id") int id, @DefaultValue("0") @QueryParam("type") int type) {
 		ObjectMapper mapper = new ObjectMapper();
 
 		try (Connection con = ConnectionUtil.getConnection()) {
-			if(type == 0) {
+			if (type == 0) {
 				List<Request> result = db.getUserRequests(con, id);
 				return mapper.writeValueAsString(result);
 			} else {
 				List<Request> result = db.getUserTypedRequests(con, id, type);
 				return mapper.writeValueAsString(result);
 			}
-			
+
 		} catch (Exception e) {
 			return e.getMessage();
 		}

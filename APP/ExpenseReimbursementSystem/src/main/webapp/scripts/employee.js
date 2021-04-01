@@ -1,7 +1,7 @@
 //Fill pending table at initial load
 getPendingRequests();
 
-//Assign functions to tabs after page load
+//Assign functions to tabs
 $('#pendingTab').click(getPendingRequests);
 $('#approvedTab').click(getApprovedRequests);
 $('#deniedTab').click(getDeniedRequests);
@@ -9,6 +9,10 @@ $('#deniedTab').click(getDeniedRequests);
 //Get request submit button by id
 $('#submitRequest').click(submitRequest)
 
+//Edit button for sidebar
+$('#editPrompt').click(updateInfo);
+
+//Tab Onclicks
 function getPendingRequests() {
 	console.log('Getting pending requests...')
 	getRequests(1);
@@ -24,9 +28,8 @@ function getDeniedRequests() {
 	getRequests(3);
 }
 
+//Read user input, send ajax request/write to db
 function submitRequest() {
-	console.log('be gentle');
-
 	const id = document.getElementById('uId').innerHTML;
 	const amount = $("#rAmount").val();
 	const rFor = $("#rFor").val();
@@ -46,9 +49,7 @@ function submitRequest() {
 	});
 }
 
-
-
-
+//Callback fn for tabs
 function getRequests(type) {
 	//Get user id
 	const id = document.getElementById('uId').innerHTML;
@@ -92,4 +93,6 @@ function getRequests(type) {
       `)
 		});
 	});
+	
+	//Update user information based on inputs
 }

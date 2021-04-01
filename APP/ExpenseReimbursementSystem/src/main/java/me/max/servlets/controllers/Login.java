@@ -55,7 +55,6 @@ public class Login extends HttpServlet {
 			String n = request.getParameter("username");
 			String p = request.getParameter("password");
 			String t = request.getParameter("type");
-			System.out.println(n + p + t);
 			// Depending on login button clicked, attempt to login
 			// for appropriate role w/ user inputs
 			switch (t) {

@@ -17,8 +17,10 @@ int id = user.getId();
 	rel="stylesheet"
 	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
 	crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 </head>
 <body>
+<!-- Navbar! -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Navbar</a>
@@ -42,6 +44,7 @@ int id = user.getId();
 		</div>
 	</nav>
 	<main class="container">
+		<!-- User Sidebar -->
 		<div class="row">
 			<div class="col-3" id="userInfo">
 				<h5>
@@ -58,6 +61,9 @@ int id = user.getId();
 					<%
 					out.print("Email: " + email);
 					%>
+				</p>
+				<p id="editPrompt">
+					Edit profile <i class="bi bi-pencil"></i>
 				</p>
 			</div>
 			<!-- Main Request navigation/display -->
@@ -79,7 +85,7 @@ int id = user.getId();
 				<div id="display"></div>
 			</div>
 		</div>
-		<!-- Modal -->
+		<!-- Request Modal -->
 		<div class="modal fade" id="requestModal" tabindex="-1"
 			aria-labelledby="requestModalLabel" aria-hidden="true">
 			<div class="modal-dialog">

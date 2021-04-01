@@ -91,9 +91,21 @@ function getRequests(type) {
 		});
 	});
 	
-	//Update user information based on input selected
-	$("#submitFirst").click(() => {
-		const input = $(fName).val();
+	//Update user information for each input selected
+	$('#submitFirst').click(() => {
+		const input = $('#fName').val();
 		console.log(input);
+	})
+	
+	$('#submitLast').click(() => {
+		const input = $('#lName').val();
+		console.log(input);
+
+	})
+	
+	$('#submitEmail').click(() => {
+		const input = $('#email').val();
+		console.log(input);
+
 	})
 }

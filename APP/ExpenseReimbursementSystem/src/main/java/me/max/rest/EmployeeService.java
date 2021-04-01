@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import me.max.dao.UserDAO;
 import me.max.dao.UserDAOImpl;
-import me.max.models.UpdateRequest;
+import me.max.models.UpdateEmployee;
 import me.max.models.User;
 import me.max.util.ConnectionUtil;
 
@@ -51,7 +51,7 @@ public class EmployeeService {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try(Connection con = ConnectionUtil.getConnection()) {
-			UpdateRequest r = mapper.readValue(body, UpdateRequest.class);
+			UpdateEmployee r = mapper.readValue(body, UpdateEmployee.class);
 			db.updateUser(con, r.getId(), r.getCol(), r.getVal());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

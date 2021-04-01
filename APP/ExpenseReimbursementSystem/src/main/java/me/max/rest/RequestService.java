@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import me.max.dao.RequestDAO;
 import me.max.dao.RequestDAOImpl;
-import me.max.models.ProcessRequest;
+import me.max.models.PostRIRequest;
 import me.max.models.Request;
 import me.max.util.ConnectionUtil;
 
@@ -76,7 +76,7 @@ public class RequestService {
 		ObjectMapper mapper = new ObjectMapper();
 
 		try (Connection con = ConnectionUtil.getConnection()) {
-			ProcessRequest r = mapper.readValue(body, ProcessRequest.class);
+			PostRIRequest r = mapper.readValue(body, PostRIRequest.class);
 			System.out.println(r.getuId());
 			db.createRequest(con, r.getuId(), r.getAmount(), r.getrFor());
 		} catch (Exception e) {

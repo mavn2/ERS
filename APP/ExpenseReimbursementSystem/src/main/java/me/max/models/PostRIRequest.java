@@ -1,11 +1,11 @@
 package me.max.models;
 
-public class ProcessRequest {
+public class PostRIRequest {
 	private int uId;
 	private double amount;
 	private String rFor;
 	
-	public ProcessRequest() {
+	public PostRIRequest() {
 		super();
 	}
 

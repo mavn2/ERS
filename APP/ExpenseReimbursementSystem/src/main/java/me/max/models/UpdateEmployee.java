@@ -1,11 +1,11 @@
 package me.max.models;
 
-public class UpdateRequest {
+public class UpdateEmployee {
 	private int id;
 	private String col;
 	private String val;
 	
-	public UpdateRequest() {
+	public UpdateEmployee() {
 		super();
 	}
 

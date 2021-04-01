@@ -32,7 +32,7 @@ public class RequestService {
 		this.db = new RequestDAOImpl();
 	}
 
-	//Get All requests of defined type
+	// Get All requests of defined type
 	@GET
 	@Path("/all/{type}")
 	@Consumes(MediaType.TEXT_PLAIN)
@@ -48,7 +48,7 @@ public class RequestService {
 		}
 	}
 
-	//Get all requests for specified user, type optional
+	// Get all requests for specified user, type optional
 	@GET
 	@Path("/user/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -68,15 +68,15 @@ public class RequestService {
 			return e.getMessage();
 		}
 	}
-	
+
 	@POST
 	@Path("/request")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createRequest(String body) {
-		System.out.println(body);
-		ObjectMapper map = new ObjectMapper();
-		try(Connection con = ConnectionUtil.getConnection()){
-			ProcessRequest r = map.readValue(body, ProcessRequest.class);
+		ObjectMapper mapper = new ObjectMapper();
+
+		try (Connection con = ConnectionUtil.getConnection()) {
+			ProcessRequest r = mapper.readValue(body, ProcessRequest.class);
 			System.out.println(r.getuId());
 			db.createRequest(con, r.getuId(), r.getAmount(), r.getrFor());
 		} catch (Exception e) {
@@ -84,5 +84,5 @@ public class RequestService {
 			return Response.status(500).build();
 		}
 		return Response.status(200).build();
-		}
+	}
 }

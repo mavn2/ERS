@@ -33,13 +33,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean updateUser(Connection con, int uId, String col, String value) throws SQLException {
-		String sql = "UPDATE employees SET ? = ? WHERE id = ?;";
+		String sql = "UPDATE employees SET " + col + " = ? WHERE id = ?;";
 
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, col);
-		ps.setString(2, value);
-		ps.setInt(3, uId);
-
+		ps.setString(1, value);
+		ps.setInt(2, uId);
+		System.out.println(ps);
 		int check = ps.executeUpdate();
 
 		if (check == 1) {

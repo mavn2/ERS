@@ -5,14 +5,17 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import me.max.dao.UserDAO;
 import me.max.dao.UserDAOImpl;
+import me.max.models.UpdateRequest;
 import me.max.models.User;
 import me.max.util.ConnectionUtil;
 
@@ -39,5 +42,21 @@ public class EmployeeService {
 		} catch (Exception e) {
 			return e.getMessage();
 		}
+	}
+	
+	@PUT
+	@Path("/employee")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateEmployee(String body) {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try(Connection con = ConnectionUtil.getConnection()) {
+			UpdateRequest r = mapper.readValue(body, UpdateRequest.class);
+			db.updateUser(con, r.getId(), r.getCol(), r.getVal());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Response.status(500).build();
+		}		
+		return Response.status(200).build();
 	}
 }

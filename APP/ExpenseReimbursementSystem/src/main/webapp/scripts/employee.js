@@ -38,7 +38,7 @@ function submitRequest() {
 		"headers": {
 			"Content-Type": "application/json"
 		},
-		"data": JSON.stringify({ "uId": id, "amount":  amount, "rFor": rFor }),
+		"data": JSON.stringify({ "uId": id, "amount": amount, "rFor": rFor }),
 	};
 
 	$.ajax(settings).done((response) => {
@@ -90,22 +90,67 @@ function getRequests(type) {
       `)
 		});
 	});
-	
+
 	//Update user information for each input selected
 	$('#submitFirst').click(() => {
 		const input = $('#fName').val();
-		console.log(input);
+		const id = document.getElementById('uId').innerHTML;
+		const col = "first_name"
+
+		var settings = {
+			"url": "http://localhost:8080/ExpenseReimbursementSystem/rest/employees/employee",
+			"method": "PUT",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"data": JSON.stringify({ "id": id, "col": col, "val": input }),
+		};
+
+		$.ajax(settings).done((response) => {
+			console.log(`Response: ${response}`);
+		});
 	})
-	
+
 	$('#submitLast').click(() => {
 		const input = $('#lName').val();
-		console.log(input);
+		const id = document.getElementById('uId').innerHTML;
+		const col = "last_name"
+
+		var settings = {
+			"url": "http://localhost:8080/ExpenseReimbursementSystem/rest/employees/employee",
+			"method": "PUT",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"data": JSON.stringify({ "id": id, "col": col, "val": input }),
+		};
+		console.log(settings.data)
+		$.ajax(settings).done((response) => {
+			console.log(`Response: ${response}`);
+		});
 
 	})
-	
+
 	$('#submitEmail').click(() => {
 		const input = $('#email').val();
-		console.log(input);
+		const id = document.getElementById('uId').innerHTML;
+		const col = "email";
+
+		var settings = {
+			"url": "http://localhost:8080/ExpenseReimbursementSystem/rest/employees/employee",
+			"method": "PUT",
+			"timeout": 0,
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"data": JSON.stringify({ "val": id, "col": col, "val": input }),
+		};
+
+		$.ajax(settings).done((response) => {
+			console.log(`Response: ${response}`);
+		});
 
 	})
 }

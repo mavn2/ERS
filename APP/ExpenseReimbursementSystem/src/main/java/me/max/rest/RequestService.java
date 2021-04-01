@@ -6,14 +6,19 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import me.max.dao.RequestDAO;
 import me.max.dao.RequestDAOImpl;
+import me.max.models.ProcessRequest;
 import me.max.models.Request;
 import me.max.util.ConnectionUtil;
 
@@ -63,4 +68,21 @@ public class RequestService {
 			return e.getMessage();
 		}
 	}
+	
+	@POST
+	@Path("/request")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createRequest(String body) {
+		System.out.println(body);
+		ObjectMapper map = new ObjectMapper();
+		try(Connection con = ConnectionUtil.getConnection()){
+			ProcessRequest r = map.readValue(body, ProcessRequest.class);
+			System.out.println(r.getuId());
+			db.createRequest(con, r.getuId(), r.getAmount(), r.getrFor());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Response.status(500).build();
+		}
+		return Response.status(200).build();
+		}
 }

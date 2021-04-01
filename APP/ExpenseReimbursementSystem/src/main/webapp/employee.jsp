@@ -32,9 +32,9 @@ int id = user.getId();
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="#">Home</a></li>
-					<li class="nav-item"><button class="nav-link btn" type="button"
-						data-bs-toggle="modal" data-bs-target="#exampleModal">New
-							Request</button></li>
+					<li class="nav-item"><button class="nav-link btn"
+							type="button" data-bs-toggle="modal"
+							data-bs-target="#requestModal">New Request</button></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/ExpenseReimbursementSystem/logout">Logout</a></li>
 				</ul>
@@ -42,26 +42,6 @@ int id = user.getId();
 		</div>
 	</nav>
 	<main class="container">
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">...</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-3" id="userInfo">
 				<h5>
@@ -97,6 +77,38 @@ int id = user.getId();
 					</li>
 				</ul>
 				<div id="display"></div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="requestModal" tabindex="-1"
+			aria-labelledby="requestModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="requestModalLabel">Request</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div>
+							<div class="mb-3">
+								<label for="rAmount" class="form-label">Amount</label> <input
+									type="text" class="form-control" id="rAmount" name="amount">
+							</div>
+							<div class="mb-3">
+								<label for="rFor" class="form-label">For</label> <input
+									type="text" class="form-control" id="rFor" name="for">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" id="submitRequest"
+							data-bs-dismiss="modal">Submit</button>
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>

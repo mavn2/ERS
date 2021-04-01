@@ -74,16 +74,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CreateRequest</display-name>
-    <servlet-name>CreateRequest</servlet-name>
-    <servlet-class>me.max.servlets.controllers.CreateRequest</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateRequest</servlet-name>
-    <url-pattern>/CreateRequest</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>employee</display-name>
     <servlet-name>employee</servlet-name>
     <jsp-file>/employee.jsp</jsp-file>

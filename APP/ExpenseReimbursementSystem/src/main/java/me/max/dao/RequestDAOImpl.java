@@ -36,7 +36,7 @@ public class RequestDAOImpl implements RequestDAO {
 		// Set values if returned, else throw exception (creation failed)
 		if (rs.next()) {
 			id = rs.getInt(1);
-			date = rs.getDate(2);
+			date = rs.getDate(7);
 		} else {
 			throw new SQLException("Error: Request could not be created.");
 		}

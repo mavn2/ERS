@@ -9,9 +9,6 @@ $('#deniedTab').click(getDeniedRequests);
 //Get request submit button by id
 $('#submitRequest').click(submitRequest)
 
-//Edit button for sidebar
-$('#editPrompt').click(updateInfo);
-
 //Tab Onclicks
 function getPendingRequests() {
 	console.log('Getting pending requests...')
@@ -94,5 +91,9 @@ function getRequests(type) {
 		});
 	});
 	
-	//Update user information based on inputs
+	//Update user information based on input selected
+	$("#submitFirst").click(() => {
+		const input = $(fName).val();
+		console.log(input);
+	})
 }

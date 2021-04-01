@@ -17,10 +17,11 @@ int id = user.getId();
 	rel="stylesheet"
 	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
 	crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 </head>
 <body>
-<!-- Navbar! -->
+	<!-- Navbar! -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Navbar</a>
@@ -62,7 +63,8 @@ int id = user.getId();
 					out.print("Email: " + email);
 					%>
 				</p>
-				<p id="editPrompt">
+				<p id="editPrompt" data-bs-toggle="modal"
+					data-bs-target="#updateModal">
 					Edit profile <i class="bi bi-pencil"></i>
 				</p>
 			</div>
@@ -111,6 +113,50 @@ int id = user.getId();
 						<button class="btn btn-primary" id="submitRequest"
 							data-bs-dismiss="modal">Submit</button>
 
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="updateModal" tabindex="-1"
+			aria-labelledby="updateModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="updateModalLabel">Update</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div>
+							<div class="input-group mb-3">
+								<input type="text" placeholder="First Name"
+									value=<%out.print(fName);%> class="form-control" id="fName">
+								<button class="btn btn-outline-secondary" type="button"
+									id="submitFirst">
+									<i class="bi bi-pencil"></i>
+								</button>
+							</div>
+							<div class="input-group mb-3">
+								<input type="text" placeholder="Last Name"
+									value=<%out.print(lName);%> class="form-control" id="lName">
+								<button class="btn btn-outline-secondary" type="button"
+									id="submitLast">
+									<i class="bi bi-pencil"></i>
+								</button>
+							</div>
+							<div class="input-group mb-3">
+								<input type="email" placeholder="email" value=<%out.print(email);%>
+									class="form-control" id="email">
+								<button class="btn btn-outline-secondary" type="button"
+									id="submitEmail">
+									<i class="bi bi-pencil"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
 					</div>

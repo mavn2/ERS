@@ -5,4 +5,5 @@
 /APP/ExpenseReimbursementSystem/.project
 /APP/ExpenseReimbursementSystem/Target/
 /APP/Servers
+.vscode
 .*;

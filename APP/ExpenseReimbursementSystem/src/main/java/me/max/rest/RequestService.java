@@ -27,6 +27,7 @@ public class RequestService {
 		this.db = new RequestDAOImpl();
 	}
 
+	//Get All requests of defined type
 	@GET
 	@Path("/all/{type}")
 	@Consumes(MediaType.TEXT_PLAIN)
@@ -42,6 +43,7 @@ public class RequestService {
 		}
 	}
 
+	//Get all requests for specified user, type optional
 	@GET
 	@Path("/user/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

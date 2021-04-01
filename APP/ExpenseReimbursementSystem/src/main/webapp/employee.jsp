@@ -45,16 +45,40 @@ int id = user.getId();
 					out.print(fName + " " + lName);
 					%>
 				</h5>
+				<p>
+					<%
+					out.print("Employee ID: " + "<span id=uId>" + id + "</span>");
+					%>
+				</p>
+				<p>
+					<%
+					out.print("Email: " + email);
+					%>
+				</p>
 			</div>
-			<div class="col-9" id="display"></div>
+			<div class="col-9">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item" id="pendingTab">
+					<button class="nav-link active" type="button" role="tab" data-bs-toggle="tab">Active</button>
+					</li>
+					<li class="nav-item" id="approvedTab">
+					<button class="nav-link" type="button" role="tab"  data-bs-toggle="tab">Approved</button>
+					</li>
+					<li class="nav-item" id="deniedTab">
+					<button class="nav-link" type="button" role="tab"  data-bs-toggle="tab">Denied</button>
+					</li>
+				</ul>
+				<div id="display"></div>
+			</div>
 		</div>
 	</main>
-
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/scripts/employee.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
 		crossorigin="anonymous"></script>
-</body>
 </html>

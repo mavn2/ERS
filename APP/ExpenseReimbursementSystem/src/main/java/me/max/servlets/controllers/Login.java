@@ -80,7 +80,7 @@ public class Login extends HttpServlet {
 				;
 
 			default:
-				out.print("failed");
+				out.print("<p>Login attempt failed.<p>");
 				RequestDispatcher rd = request.getRequestDispatcher("/./index.html");
 				rd.include(request, response);
 			}

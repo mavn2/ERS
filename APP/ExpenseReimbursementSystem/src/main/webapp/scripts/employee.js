@@ -6,7 +6,7 @@ $('#pendingTab').click(getPendingRequests);
 $('#approvedTab').click(getApprovedRequests);
 $('#deniedTab').click(getDeniedRequests);
 
-//Get request submit button by id
+//On click for Submit Request btn in navbar
 $('#submitRequest').click(submitRequest)
 
 //Tab Onclicks
@@ -75,7 +75,7 @@ function getRequests(type) {
 
 	//Query rest endpoint
 	$.ajax(settings).done(response => {
-		//Display area once content can be loaded
+		//Clean Display area once content can be loaded
 		$('#load').remove();
 		$('thead.empty');
 
@@ -90,7 +90,7 @@ function getRequests(type) {
       `)
 		});
 	});
-
+}
 	//Update user information for each input selected
 	$('#submitFirst').click(() => {
 		const input = $('#fName').val();

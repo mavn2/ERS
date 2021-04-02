@@ -74,15 +74,15 @@ int id = user.getId();
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item" id="pendingTab">
 						<button class="nav-link active" type="button" role="tab"
-							data-bs-toggle="tab">Active</button>
+							data-bs-toggle="tab">Pending</button>
 					</li>
-					<li class="nav-item" id="approvedTab">
+					<li class="nav-item" id="resolvedTab">
 						<button class="nav-link" type="button" role="tab"
-							data-bs-toggle="tab">Approved</button>
+							data-bs-toggle="tab">Resolved</button>
 					</li>
-					<li class="nav-item" id="deniedTab">
+					<li class="nav-item" id="employeeTab">
 						<button class="nav-link" type="button" role="tab"
-							data-bs-toggle="tab">Denied</button>
+							data-bs-toggle="tab">Employees</button>
 					</li>
 				</ul>
 				<div id="display"></div>

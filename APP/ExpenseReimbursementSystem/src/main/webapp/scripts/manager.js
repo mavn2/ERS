@@ -4,7 +4,7 @@ getPendingRequests();
 //On click/change content fns for tabs
 $('#pendingTab').click(getPendingRequests);
 $('#resolvedTab').click(() => getResolvedRequests(2, 3));
-//$('#employeeTab').click(getAllEmployees);
+$('#employeeTab').click(getAllEmployees);
 
 //Onclick for pending tab
 function getPendingRequests() {
@@ -34,7 +34,6 @@ function getPendingRequests() {
 		$('thead.empty');
 
 		response.forEach(element => {
-			console.log(element.applyId)
 			//add approve/decline buttons if appropriate
 			let action = `<button type="button" class="btn btn-success" data-id="${element.id}" onclick="resolveRequest(2)"><i class="bi bi-check-circle-fill" data-id="${element.id}"></i> </button> / <button type="button" class="btn btn-danger" data-id="${element.id}" onclick="resolveRequest(3)"><i class="bi bi-x-circle-fill" data-id="${element.id}"></i></button>`;
 			if (id == element.applyId) {
@@ -70,7 +69,7 @@ function resolveRequest(status) {
 	};
 
 	$.ajax(settings).done(function(response) {
-		console.log(response);
+		console.log(`Response: ${response}`);
 	});
 }
 
@@ -136,4 +135,54 @@ function getResolvedRequests(...types) {
 			}
 		});
 	})
+}
+
+//Onclick for pending tab
+function getAllEmployees() {
+	//Store employee data for quicker searches
+	let employees = [];
+	
+	//Write initial table html to dom
+	const hanger = $('#display');
+	hanger.empty();
+
+	hanger.append(`<table class='table'>
+   	  <thead><tr> <th> Id # </th>
+  	  <th> First Name </th> <th> Last Name </th> <th> Email </th> <th> Role </th></thead> </table>`)
+
+	// Append loading message
+	$('table').append('<p id="load">Loading...<p>')
+
+	//JQuery ajax settings
+	var settings = {
+		"url": `http://localhost:8080/ExpenseReimbursementSystem/rest/employees/roster`,
+		"method": "GET",
+		"timeout": 0,
+	}
+	
+	//Execute query
+	$.ajax(settings).done(response => {
+		//Clean Display area once content can be loaded
+		$('#load').remove();
+		$('thead.empty');
+		
+		//Save response to fn array
+		employees = response; 
+		response.forEach(element => {
+			let role = "Employee";
+			if(role == 2){
+				role = "Manager";
+			}
+			
+			$('table').prepend(`
+	  <tr data-attr="${element.id}">
+      <td>${element.id}</td>
+      <td>${element.firstName}</td>
+      <td>${element.lastName}</td>
+	  <td>${element.email} </td>
+      <td>${role}</td>
+	  </tr>
+      `)
+		});
+	});
 }

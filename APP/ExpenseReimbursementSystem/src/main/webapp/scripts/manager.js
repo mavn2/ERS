@@ -8,13 +8,16 @@ $('#resolvedTab').click(() => getResolvedRequests(2, 3));
 
 //Onclick for pending tab
 function getPendingRequests() {
+	//Get user id
+	const id = document.getElementById('uId').innerHTML;
+	
 	//Write initial table html to dom
 	const hanger = $('#display');
 	hanger.empty();
 
 	hanger.append(`<table class='table'>
    	  <thead><tr> <th> Id # </th>
-  	  <th> Amount </th> <th> For </th> <th> Date </th> </tr></thead> </table>`)
+  	  <th> Amount </th> <th> For </th> <th> By Id: </th> <th> Date </th> <th> Action </th></tr></thead> </table>`)
 
 	// Append loading message
 	$('table').append('<p id="load">Loading...<p>')
@@ -31,18 +34,27 @@ function getPendingRequests() {
 		$('thead.empty');
 
 		response.forEach(element => {
+		//add approve/decline buttons if appropriate
+		let action = `<button type="button" class="btn btn-success" onclick="approveRequest()"><i class="bi bi-check-circle-fill"></i> </button> / <button type="button" class="btn btn-danger" onclick="denyRequest()"><i class="bi bi-x-circle-fill"></i></button>`;
+		if(id === element.applyId){
+			action ='N/A';
+		}
 			$('table').prepend(`
 	  <tr>
       <td>${element.id}</td>
       <td>$${element.amount}</td>
       <td>${element.rFor}</td>
+	  <td>${element.applyId} </td>
       <td>${(new Date(element.date).toDateString())}</td>
+	  <td>${action}.</td>
 	  </tr>
       `)
 		});
 	});
 }
 
+//Functions for buttons
+approveR
 
 //Callback for resolved tab
 function getResolvedRequests(...types) {

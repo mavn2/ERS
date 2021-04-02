@@ -141,14 +141,22 @@ function getResolvedRequests(...types) {
 function getAllEmployees() {
 	//Store employee data for quicker searches
 	let employees = [];
-	
-	//Write initial table html to dom
+
+	//Write search bar, table header to dom
 	const hanger = $('#display');
 	hanger.empty();
-
+	hanger.append(`<div class="input-group mb-3">
+	  	<input type="text" class="form-control" id="searchBar" placeholder="Search">
+	  	<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="eSearch">By</button>
+	  	<ul class="dropdown-menu dropdown-menu-end">
+	    <li><button id="id" class="dropdown-item eSearch">Id</button></li>
+	    <li><button id="name" class="dropdown-item eSearch">Name</button></li>
+	    <li><button id="email" class="dropdown-item eSearch">Email</button></li>
+	  	</ul>
+		</div>`)
 	hanger.append(`<table class='table'>
-   	  <thead><tr> <th> Id # </th>
-  	  <th> First Name </th> <th> Last Name </th> <th> Email </th> <th> Role </th></thead> </table>`)
+   	   <thead><tr> <th> Id # </th>
+  	   <th> First Name </th> <th> Last Name </th> <th> Email </th> <th> Role </th></thead> </table>`)
 
 	// Append loading message
 	$('table').append('<p id="load">Loading...<p>')
@@ -159,22 +167,49 @@ function getAllEmployees() {
 		"method": "GET",
 		"timeout": 0,
 	}
-	
+
 	//Execute query
 	$.ajax(settings).done(response => {
-		//Clean Display area once content can be loaded
-		$('#load').remove();
-		$('thead.empty');
-		
+
 		//Save response to fn array
-		employees = response; 
-		response.forEach(element => {
-			let role = "Employee";
-			if(role == 2){
-				role = "Manager";
-			}
-			
-			$('table').prepend(`
+		employees = response;
+
+		renderEmployees(response);
+	});
+
+
+	//Tie search fn to search bar
+	$(".eSearch").click((e) => {
+		const input = $("#searchBar").val();
+		console.log(input);
+		console.log(employees)
+		switch (e.target.id){
+			case 'id':
+			const result = employees.filter(e => e.id == input);
+			renderEmployees(result);
+			break;
+			case 'name':
+			break;
+			case 'email':
+			break;
+		}
+	})
+}
+
+//Re-usable employee jQuery code
+function renderEmployees(employees) {
+	
+			//Clean Display area once content can be loaded
+		$('#load').remove();
+		$('thead').empty();
+
+	employees.forEach(element => {
+		let role = "Employee";
+		if (role == 2) {
+			role = "Manager";
+		}
+
+		$('table').prepend(`
 	  <tr data-attr="${element.id}">
       <td>${element.id}</td>
       <td>${element.firstName}</td>
@@ -183,6 +218,5 @@ function getAllEmployees() {
       <td>${role}</td>
 	  </tr>
       `)
-		});
-	});
+	})
 }

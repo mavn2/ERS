@@ -45,8 +45,12 @@ public class Logout extends HttpServlet {
 		} else {
 			session.invalidate();
 			PrintWriter out = response.getWriter();
+			out.print("<html>");
+			out.print("<style> body {background:aqua;} </style>");
 			out.println("<p> You've been logged out. <p>");
 			out.println("<p> Have a great day! <p>");
+			out.print("</html>");
+
 		}
 	}
 

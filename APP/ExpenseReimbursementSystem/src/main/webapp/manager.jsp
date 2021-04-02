@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="me.max.models.User"%>
 <%
-User user = (User) session.getAttribute("user");
-String fName = user.getFirstName();
-String lName = user.getLastName();
-String email = user.getEmail();
-int id = user.getId();
+if(request.getSession(false) == null){
+	response.sendRedirect("/ExpenseReimbursementSystem");
+} else {
+	User user = (User) session.getAttribute("user");
+	String fName = user.getFirstName();
+	String lName = user.getLastName();
+	String email = user.getEmail();
+	int id = user.getId();
+}
 %>
 <!DOCTYPE html>
 <html>

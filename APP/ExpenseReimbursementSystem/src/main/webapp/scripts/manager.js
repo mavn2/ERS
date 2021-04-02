@@ -168,9 +168,10 @@ function getAllEmployees() {
 
 	//Execute query
 	$.ajax(settings).done(response => {
+		const sorted = response.sort((a, b) => b.id - a.id);
 
 		//Save response to fn array
-		employees = response;
+		employees = sorted;
 
 		renderEmployees(response);
 	});
@@ -214,12 +215,13 @@ function renderEmployees(employees) {
 
 	employees.forEach(element => {
 		let role = "Employee";
-		if (role == 2) {
+		if (element.role == 2) {
 			role = "Manager";
 		}
 
 		$('tbody').prepend(`
-	  <tr data-attr="${element.id}">
+	  <tr class="getDetails" data-bs-toggle="modal"
+		data-bs-target="#detailsModal" onclick="getEmpRequests(${element.id})">
       <td>${element.id}</td>
       <td>${element.firstName}</td>
       <td>${element.lastName}</td>
@@ -227,5 +229,42 @@ function renderEmployees(employees) {
       <td>${role}</td>
 	  </tr>
       `)
+	})
+}
+
+//Show all employee requests
+function getEmpRequests(id) {
+	//Clear table
+	$('#modalTbl tr').remove();
+	$('#load').remove();
+
+	var settings = {
+		"url": `http://localhost:8080/ExpenseReimbursementSystem/rest/ers/user/${id}`,
+		"method": "GET",
+		"timeout": 0,
+	};
+
+	$.ajax(settings).done(function(response) {
+		const sorted = response.sort((a, b) => a.id - b.id);
+		//Render sorted results in html
+		sorted.forEach(element => {
+			//Translate status to string
+			let status = "Pending";
+			if (element.status === 2){
+				status = "Approved";
+			}
+			if (element.status === 3) {
+				status = "Denied";
+			}
+
+			$('#modalTbl').prepend(`
+				  <tr data-id = {}>
+			      <td>${element.id}</td>
+				  <td>${status}</td>
+			      <td>$${element.amount}</td>
+			      <td>${element.rFor}</td>
+			      <td>${(new Date(element.date).toDateString())}</td>
+				  </tr>`)
+		});
 	})
 }

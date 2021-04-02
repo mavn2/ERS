@@ -179,27 +179,38 @@ function getAllEmployees() {
 	//Tie search fn to search bar
 	$(".eSearch").click((e) => {
 		const input = $("#searchBar").val();
-		console.log(input);
-		console.log(employees)
-		switch (e.target.id){
-			case 'id':
-			const result = employees.filter(e => e.id == input);
-			renderEmployees(result);
-			break;
-			case 'name':
-			break;
-			case 'email':
-			break;
+		let result;
+		if (input !== "") {
+			switch (e.target.id) {
+				case 'id':
+					result = employees.filter(e => e.id == input);
+					renderEmployees(result);
+					break;
+				case 'name':
+					result = employees.filter(e => {
+						if (e.firstName.includes(input) || e.lastName.includes(input)) {
+							return e;
+						}
+					}); //|| e.lastName.includes(input)
+					renderEmployees(result);
+					break;
+				case 'email':
+					result = employees.filter(e => e.email.toLowerCase().includes(input.toLowerCase()))
+					renderEmployees(result);
+					break;
+			}
+		} else {
+			renderEmployees(employees);
 		}
 	})
 }
 
 //Re-usable employee jQuery code
 function renderEmployees(employees) {
-	
-			//Clean Display area once content can be loaded
-		$('#load').remove();
-		$('tbody tr').remove();
+
+	//Clean Display area once content can be loaded
+	$('#load').remove();
+	$('tbody tr').remove();
 
 	employees.forEach(element => {
 		let role = "Employee";

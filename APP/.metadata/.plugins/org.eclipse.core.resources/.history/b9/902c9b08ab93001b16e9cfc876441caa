@@ -1,0 +1,26 @@
+#userInfo {
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: black;
+}
+
+#userInfo .row {
+	border-bottom: 1px solid black;
+	padding-top: 1px;
+}
+
+#loginForm {
+	margin-top: 45%;
+}
+
+body {
+	background: aqua;
+}
+
+.nav-tabs .nav-link.active {
+	background-color: floralwhite;
+
+.navbar{
+	background-color: burlywood;
+	
+}

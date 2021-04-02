@@ -1,0 +1,43 @@
+package me.max.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import me.max.models.Request;
+
+public class RequestDAOImpl implements RequestDAO {
+
+	@Override
+	public Request createRequest(Connection con, int uId, double amount, String rFor) throws SQLException {
+		String sql = "INSERT INTO ri_requests(apply_id, ri_status, ri_amount, ri_for) VALUES (?, ?, ?, ?);";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, uId);
+		// Setting default state(pending) here to account for possible variance in db
+				// as state ids/value could change depending on implementation of request status table
+		ps.setInt(2, 1);
+		ps.setDouble(3, amount);
+		ps.setString(4, rFor);
+	}
+
+	@Override
+	public ArrayList<Request> getAllRequests(Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Request> getUserRequests(Connection con, int uId) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateRequest(Connection con, int rId, int status) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,5 @@
+#userInfo {
+	border-right-style: solid;
+	border-right-width: 3px;
+	border-right-color: black;
+}

@@ -1,0 +1,5 @@
+package me.max.models;
+
+public class ProcessRequest {
+
+}

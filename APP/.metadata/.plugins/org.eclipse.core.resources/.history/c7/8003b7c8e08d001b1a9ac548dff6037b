@@ -1,0 +1,48 @@
+package me.max.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class LoginDAOImpl implements LoginDAO{
+
+	@Override
+	public boolean loginEmployee(Connection con, String username, String password) {
+		String sql = "SELECT * FROM employees WHERE e_name = ? AND e_password = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		// Set ? in sql string = to username passed in as param
+		ps.setString(1, username);
+		ps.setString(2, password);
+		
+		// Query the database, and store results
+		ResultSet rs = ps.executeQuery();
+
+		// If matching result found, return true
+		if (rs.next()) {
+			return true;
+		}
+
+		// If above evaluates to false (no results)
+		return false;
+	}
+
+	@Override
+	public boolean loginManager(Connection con, String username, String password) {
+		String sql = "SELECT * FROM employees WHERE e_name = ? AND e_password = ? AND e_role = 2";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, username);
+		ps.setString(2, password);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		if (rs.next()) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	
+}

@@ -1,0 +1,10 @@
+package me.max.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public interface LoginDAO {
+	public void loginEmployee(Connection con, String username, String password) throws SQLException;
+	public void loginManager(Connection con, String username, String password) throws SQLException;
+
+}

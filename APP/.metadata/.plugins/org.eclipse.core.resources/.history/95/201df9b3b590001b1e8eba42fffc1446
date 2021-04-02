@@ -1,0 +1,7 @@
+package me.max.rest;
+
+public class ResolvePost {
+	int uId;
+	int rId;
+	int status;	
+}

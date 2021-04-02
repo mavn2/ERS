@@ -1,0 +1,2 @@
+$('#pendingTab').click(getPendingRequests);
+$('#pendingTab').click(getPendingRequests);

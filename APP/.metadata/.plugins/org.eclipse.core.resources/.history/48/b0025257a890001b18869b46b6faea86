@@ -1,0 +1,8 @@
+package me.max.rest;
+
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.MessageBodyReader;
+
+public class JSONBodyReader implements MessageBodyReader<Request>{
+
+}

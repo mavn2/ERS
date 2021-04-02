@@ -1,0 +1,14 @@
+package me.max.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import me.max.models.Request;
+
+public interface RequestDAO {
+	public Request createRequest(Connection con, int uId, double amount, String rFor) throws SQLException;
+	public ArrayList<Request> getAllRequests(Connection con) throws SQLException;
+	public  ArrayList<Request> getUserRequests(Connection con, int uId) throws SQLException;
+	public boolean updateRequest(Connection con, int rId, int status) throws SQLException;
+}

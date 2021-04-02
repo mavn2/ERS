@@ -1,0 +1,39 @@
+//Fill pending table at intial load
+getPendingRequests(1);
+
+//On click/change content fns for tabs
+$('#pendingTab').click(getPendingRequests);
+//$('#resolvedTab').click(getResolvedRequests);
+//$('#employeeTab').click(getAllEmployees);
+
+//Onclick for pending tab
+function getPendingRequests() {
+	getRequests(1);
+}
+//Onclick for resolved tab
+
+//Callback: get/render requests
+async function getRequests(...type) {
+	//Array to store potential multiple request sets
+	let results = [];
+
+	//JQuery defer is cleaner then writing a promise and the ide hated async
+	let toSort = await newFunction()
+	console.log(toSort.sort((a, b) => { return a.id - b.id }))	
+
+
+	async function newFunction() {
+		return await type.forEach(t => {
+			var settings = {
+				"url": `http://localhost:8080/ExpenseReimbursementSystem/rest/ers/all/${t}`,
+				"method": "GET",
+				"timeout": 0,
+			};
+
+			$.ajax(settings).done(function(response) {
+				results = results.concat(response);
+				console.log(results);
+			});
+		});
+	}
+}

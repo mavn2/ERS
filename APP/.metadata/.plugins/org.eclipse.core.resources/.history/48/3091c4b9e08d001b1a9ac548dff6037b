@@ -1,0 +1,21 @@
+package me.max.dao;
+
+import java.sql.Connection;
+
+public class LoginDAOImpl implements LoginDAO{
+
+	@Override
+	public boolean loginEmployee(Connection con, String username, String password) {
+		String sql = "SELECT * FROM employees WHERE e_name = ? AND e_password = ?";
+		
+	}
+
+	@Override
+	public boolean loginManager(Connection con, String username, String password) {
+		String sql = "SELECT * FROM employees WHERE e_name = ? AND e_password = ? AND e_role = 2";
+
+	}
+	
+	
+	
+}

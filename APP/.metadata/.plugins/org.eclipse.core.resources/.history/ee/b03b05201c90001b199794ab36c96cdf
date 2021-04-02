@@ -1,0 +1,54 @@
+package me.max.models;
+
+import java.sql.Date;
+
+public class Request {
+	private int id;
+	private int applyId;
+	private int approvId;
+	private int status;
+	private double amount;
+	private String rFor;
+	private Date date;
+
+	// Getters for fixed values-
+	// Should always be set by database/in dao
+	public int getId() {
+		return id;
+	}
+
+	public int getApplyId() {
+		return applyId;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public String getrFor() {
+		return rFor;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	// Getters/setters for values that could change w/ user input
+	public int getApprovId() {
+		return approvId;
+	}
+
+	public void setApprovId(int approvId) {
+		this.approvId = approvId;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
+	//hash, equals, toString
+}

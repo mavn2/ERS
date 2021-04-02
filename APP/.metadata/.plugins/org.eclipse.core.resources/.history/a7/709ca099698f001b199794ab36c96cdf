@@ -1,0 +1,25 @@
+package me.max.models;
+
+public class UserModel {
+	//Vars to hold user information
+	private String username;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String email;
+	
+	//Constructor for adding all fields from db
+	public UserModel(String username, String password, String firstName, String lastName, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+	
+	// Create a user from info in database, for use by application
+	public static loginUser() {
+		
+	}
+}

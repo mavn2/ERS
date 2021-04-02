@@ -1,0 +1,11 @@
+package me.max.models;
+
+public class Request {
+	private int id;
+	private int applyId;
+	private int approvId;
+	private  int status;
+	private double amount;
+	private String rFor;
+	
+}

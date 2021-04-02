@@ -1,0 +1,19 @@
+package me.max.dao;
+
+public class LoginDAOImpl implements LoginDAO{
+
+	@Override
+	public boolean loginEmployee(String username, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean loginManager(String username, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+}

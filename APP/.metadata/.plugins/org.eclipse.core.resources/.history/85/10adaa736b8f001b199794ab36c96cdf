@@ -1,0 +1,14 @@
+package me.max.dao;
+
+import java.sql.Connection;
+
+import me.max.models.User;
+
+public class UserDAOImpl implements UserDAO{
+
+	@Override
+	public User getUserByUsername(Connection con, String name) throws Exception{
+		
+	}
+	
+}

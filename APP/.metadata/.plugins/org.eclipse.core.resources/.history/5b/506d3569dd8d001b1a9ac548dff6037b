@@ -1,0 +1,5 @@
+package me.max.dao;
+
+public interface LoginDAO {
+	public void login(String username, String password);
+}

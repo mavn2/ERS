@@ -38,8 +38,8 @@ public class ManagerHome extends HttpServlet {
 	
 	//Shared/ default request processing method 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/manager");
-		rd.forward(request, response);
+		response.sendRedirect("manager");
+
 	}
 	
 

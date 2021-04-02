@@ -39,12 +39,15 @@ public class Logout extends HttpServlet {
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		HttpSession session = request.getSession();
-		session.invalidate();
-		PrintWriter out = response.getWriter();
-		out.println("<p> You've been logged out. <p>");
-		out.println("<p> Have a great day! <p>");
-
+		HttpSession session = request.getSession(false);
+		if(session == null) {
+			response.sendRedirect("/ExpenseReimbursementSystem");
+		} else {
+			session.invalidate();
+			PrintWriter out = response.getWriter();
+			out.println("<p> You've been logged out. <p>");
+			out.println("<p> Have a great day! <p>");
+		}
 	}
 
 }

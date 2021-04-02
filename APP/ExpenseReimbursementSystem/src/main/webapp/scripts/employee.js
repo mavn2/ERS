@@ -64,7 +64,7 @@ function getRequests(type) {
 
 	hanger.append(`<table class='table'>
    <thead><tr> <th> Id # </th>
-  <th> Amount </th> <th> For </th> <th> Date </th> </tr></thead> </table>`);
+  <th> Amount </th> <th> For </th> <th> Date </th> </tr></thead> <tbody></tbody> </table>`);
 
 
 
@@ -79,7 +79,7 @@ function getRequests(type) {
 		$('#load').remove();
 
 		response.forEach(element => {
-			$('table').prepend(`
+			$('tbody').prepend(`
 	  <tr>
       <td>${element.id}</td>
       <td>$${element.amount}</td>

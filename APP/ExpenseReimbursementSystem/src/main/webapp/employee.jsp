@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="me.max.models.User"%>
 <%
-	User user = (User) session.getAttribute("user");
-	String fName = user.getFirstName();
-	String lName = user.getLastName();
-	String email = user.getEmail();
-	int id = user.getId();
+User user = (User) session.getAttribute("user");
+String fName = user.getFirstName();
+String lName = user.getLastName();
+String email = user.getEmail();
+int id = user.getId();
 %>
 <!DOCTYPE html>
 <html>
@@ -48,25 +48,33 @@
 		<!-- User Sidebar -->
 		<div class="row">
 			<div class="col-3" id="userInfo">
-				<h5>
-					<%
-					out.print(fName + " " + lName);
-					%>
-				</h5>
-				<p>
-					<%
-					out.print("Employee ID: " + "<span id=uId>" + id + "</span>");
-					%>
-				</p>
-				<p>
-					<%
-					out.print("Email: " + email);
-					%>
-				</p>
-				<p id="editPrompt" data-bs-toggle="modal"
-					data-bs-target="#updateModal">
-					Edit profile <i class="bi bi-pencil"></i>
-				</p>
+				<div class="row">
+					<h5>
+						<%
+						out.print(fName + " " + lName);
+						%>
+					</h5>
+				</div>
+				<div class="row">
+					<p>
+						<%
+						out.print("Employee ID: " + "<span id=uId>" + id + "</span>");
+						%>
+					</p>
+				</div>
+				<div class="row">
+					<p>
+						<%
+						out.print("Email: " + email);
+						%>
+					</p>
+				</div>
+				<div class="row">
+					<p id="editPrompt" data-bs-toggle="modal"
+						data-bs-target="#updateModal">
+						Edit profile <i class="bi bi-pencil"></i>
+					</p>
+				</div>
 			</div>
 			<!-- Main Request navigation/display -->
 			<div class="col-9">
@@ -147,8 +155,8 @@
 								</button>
 							</div>
 							<div class="input-group mb-3">
-								<input type="email" placeholder="email" value=<%out.print(email);%>
-									class="form-control" id="email">
+								<input type="email" placeholder="email"
+									value=<%out.print(email);%> class="form-control" id="email">
 								<button class="btn btn-outline-secondary" type="button"
 									id="submitEmail">
 									<i class="bi bi-pencil"></i>

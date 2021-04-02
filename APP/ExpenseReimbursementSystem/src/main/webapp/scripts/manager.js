@@ -17,7 +17,7 @@ function getPendingRequests() {
 
 	hanger.append(`<table class='table'>
    	  <thead><tr> <th> Id # </th>
-  	  <th> Amount </th> <th> For </th> <th> By Id: </th> <th> Date </th> <th> Action </th></tr></thead> </table>`)
+  	  <th> Amount </th> <th> For </th> <th> By Id: </th> <th> Date </th> <th> Action </th></tr></thead> <tbody></tbody></table>`)
 
 	// Append loading message
 	$('table').append('<p id="load">Loading...<p>')
@@ -31,7 +31,6 @@ function getPendingRequests() {
 	$.ajax(settings).done(response => {
 		//Clean Display area once content can be loaded
 		$('#load').remove();
-		$('thead.empty');
 
 		response.forEach(element => {
 			//add approve/decline buttons if appropriate
@@ -39,7 +38,7 @@ function getPendingRequests() {
 			if (id == element.applyId) {
 				action = 'N/A';
 			}
-			$('table').prepend(`
+			$('tbody').prepend(`
 	  <tr>
       <td>${element.id}</td>
       <td>$${element.amount}</td>
@@ -87,7 +86,7 @@ function getResolvedRequests(...types) {
 	//Set theader to with additional columns
 	hanger.append(`<table class='table'>
    			<thead><tr> <th> Id # </th> <th> Status </th>
-  			<th> Amount </th> <th> For </th> <th> Date </th> </tr></thead> </table>`)
+  			<th> Amount </th> <th> For </th> <th> Date </th> </tr></thead><tbody></tbody></table>`)
 
 	// Append loading message
 	$('table').append('<p id="load">Loading...<p>')
@@ -110,7 +109,6 @@ function getResolvedRequests(...types) {
 			if (count === types.length) {
 				//Clean Display area once content can be loaded
 				$('#load').remove();
-				$('thead.empty');
 
 				//Sort results
 				const sorted = results.sort((a, b) => a.id - b.id);
@@ -122,7 +120,7 @@ function getResolvedRequests(...types) {
 						status = "Denied";
 					}
 
-					$('table').prepend(`
+					$('tbody').prepend(`
 				  <tr data-id = {}>
 			      <td>${element.id}</td>
 				  <td>${status}</td>
@@ -156,7 +154,7 @@ function getAllEmployees() {
 		</div>`)
 	hanger.append(`<table class='table'>
    	   <thead><tr> <th> Id # </th>
-  	   <th> First Name </th> <th> Last Name </th> <th> Email </th> <th> Role </th></thead> </table>`)
+  	   <th> First Name </th> <th> Last Name </th> <th> Email </th> <th> Role </th></thead> <tbody></tbody> </table>`)
 
 	// Append loading message
 	$('table').append('<p id="load">Loading...<p>')
@@ -201,7 +199,7 @@ function renderEmployees(employees) {
 	
 			//Clean Display area once content can be loaded
 		$('#load').remove();
-		$('thead').empty();
+		$('tbody tr').remove();
 
 	employees.forEach(element => {
 		let role = "Employee";
@@ -209,7 +207,7 @@ function renderEmployees(employees) {
 			role = "Manager";
 		}
 
-		$('table').prepend(`
+		$('tbody').prepend(`
 	  <tr data-attr="${element.id}">
       <td>${element.id}</td>
       <td>${element.firstName}</td>

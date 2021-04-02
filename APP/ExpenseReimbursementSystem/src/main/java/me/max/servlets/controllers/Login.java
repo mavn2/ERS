@@ -15,7 +15,6 @@ import me.max.dao.LoginDAO;
 import me.max.dao.LoginDAOImpl;
 import me.max.models.User;
 import me.max.util.ConnectionUtil;
-
 /**
  * Servlet implementation class LoginServlet
  */

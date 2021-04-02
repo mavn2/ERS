@@ -1,9 +1,0 @@
-package me.max.models;
-
-public class PutRiRequest {
-	private int uId;
-	private int rId;
-	private int status;
-	
-	
-}

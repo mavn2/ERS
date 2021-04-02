@@ -1,6 +1,0 @@
-//Fill pending table at intial load
-getPendingRequests();
-
-//On click/change content fns for tabs
-$('#pendingTab').click(getPendingRequests);
-$('#resolvedTab').click(getResolvedRequests);

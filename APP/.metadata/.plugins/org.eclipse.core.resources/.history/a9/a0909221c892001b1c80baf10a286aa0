@@ -1,7 +1,0 @@
-package me.max.models;
-
-public class ProcessRequest {
-	private int uId;
-	private double amount;
-	private String rFor;
-}

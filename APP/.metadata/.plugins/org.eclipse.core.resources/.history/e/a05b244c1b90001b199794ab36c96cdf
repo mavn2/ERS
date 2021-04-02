@@ -1,7 +1,0 @@
-package me.max.models;
-
-public class Request {
-	int id;
-	int applyId;
-	int approvId; 
-}

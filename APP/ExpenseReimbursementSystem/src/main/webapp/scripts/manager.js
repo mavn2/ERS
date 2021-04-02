@@ -54,7 +54,12 @@ function getPendingRequests() {
 }
 
 //Functions for buttons
-approveR
+function approveRequest(){
+	console.log('yes');
+}
+function denyRequest(){
+	console.log('no');
+}
 
 //Callback for resolved tab
 function getResolvedRequests(...types) {

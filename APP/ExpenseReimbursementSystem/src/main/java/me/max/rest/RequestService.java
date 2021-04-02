@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import me.max.dao.RequestDAO;
 import me.max.dao.RequestDAOImpl;
 import me.max.models.PostRIRequest;
+import me.max.models.PutRiRequest;
 import me.max.models.Request;
 import me.max.util.ConnectionUtil;
 
@@ -85,4 +87,23 @@ public class RequestService {
 		}
 		return Response.status(200).build();
 	}
+	
+	@PUT
+	@Path("/request")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response resolveRequest(String body) {
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(body);
+		
+		try (Connection con = ConnectionUtil.getConnection()) {
+			PutRiRequest r = mapper.readValue(body, PutRiRequest.class);
+			System.out.println(r.getuId());
+			db.handleRequest(con, r.getuId(), r.getrId(), r.getStatus());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return Response.status(500).build();
+		}
+		return Response.status(200).build();
+	}
+
 }

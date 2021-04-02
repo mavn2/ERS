@@ -10,7 +10,7 @@ $('#resolvedTab').click(() => getResolvedRequests(2, 3));
 function getPendingRequests() {
 	//Get user id
 	const id = document.getElementById('uId').innerHTML;
-	
+
 	//Write initial table html to dom
 	const hanger = $('#display');
 	hanger.empty();
@@ -34,11 +34,12 @@ function getPendingRequests() {
 		$('thead.empty');
 
 		response.forEach(element => {
-		//add approve/decline buttons if appropriate
-		let action = `<button type="button" class="btn btn-success" onclick="approveRequest()"><i class="bi bi-check-circle-fill"></i> </button> / <button type="button" class="btn btn-danger" onclick="denyRequest()"><i class="bi bi-x-circle-fill"></i></button>`;
-		if(id === element.applyId){
-			action ='N/A';
-		}
+			console.log(element.applyId)
+			//add approve/decline buttons if appropriate
+			let action = `<button type="button" class="btn btn-success" data-id="${element.id}" onclick="resolveRequest(2)"><i class="bi bi-check-circle-fill" data-id="${element.id}"></i> </button> / <button type="button" class="btn btn-danger" data-id="${element.id}" onclick="resolveRequest(3)"><i class="bi bi-x-circle-fill" data-id="${element.id}"></i></button>`;
+			if (id == element.applyId) {
+				action = 'N/A';
+			}
 			$('table').prepend(`
 	  <tr>
       <td>${element.id}</td>
@@ -46,19 +47,31 @@ function getPendingRequests() {
       <td>${element.rFor}</td>
 	  <td>${element.applyId} </td>
       <td>${(new Date(element.date).toDateString())}</td>
-	  <td>${action}.</td>
+	  <td><p>${action}</p></td>
 	  </tr>
       `)
 		});
 	});
 }
 
-//Functions for buttons
-function approveRequest(){
-	console.log('yes');
-}
-function denyRequest(){
-	console.log('no');
+//Function for buttons
+function resolveRequest(status) {
+	const id = document.getElementById('uId').innerHTML;
+	const requestId = event.target.getAttribute("data-id");
+
+	var settings = {
+		"url": "http://localhost:8080/ExpenseReimbursementSystem/rest/ers/request",
+		"method": "PUT",
+		"timeout": 0,
+		"headers": {
+			"Content-Type": "application/json"
+		},
+		"data": JSON.stringify({ "uId": id, "rId": requestId, "status": status }),
+	};
+
+	$.ajax(settings).done(function(response) {
+		console.log(response);
+	});
 }
 
 //Callback for resolved tab
@@ -73,7 +86,7 @@ function getResolvedRequests(...types) {
 	hanger.empty();
 
 	//Set theader to with additional columns
-		hanger.append(`<table class='table'>
+	hanger.append(`<table class='table'>
    			<thead><tr> <th> Id # </th> <th> Status </th>
   			<th> Amount </th> <th> For </th> <th> Date </th> </tr></thead> </table>`)
 
@@ -105,11 +118,11 @@ function getResolvedRequests(...types) {
 				//Render sorted results in html
 				sorted.forEach(element => {
 					//Translate status to string
-					let status = "Approved"; 
-					if (element.status === 3){
+					let status = "Approved";
+					if (element.status === 3) {
 						status = "Denied";
 					}
-					
+
 					$('table').prepend(`
 				  <tr data-id = {}>
 			      <td>${element.id}</td>

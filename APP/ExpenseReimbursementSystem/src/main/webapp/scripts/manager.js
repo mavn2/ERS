@@ -106,9 +106,10 @@ function getResolvedRequests(...types) {
 		$.ajax(settings).done(function(response) {
 			results = results.concat(response);
 			//if all results have been processed, sort and print results
-			if (count === types.length) {
+			if (count === 2) {
 				//Clean Display area once content can be loaded
 				$('.load').remove();
+				$('tbody tr').remove();
 
 				//Sort results
 				const sorted = results.sort((a, b) => a.id - b.id);

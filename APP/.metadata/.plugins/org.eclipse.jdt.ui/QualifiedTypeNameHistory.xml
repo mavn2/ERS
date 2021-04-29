@@ -28,11 +28,12 @@
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="me.max.dao.UserDAOImpl"/>
     <fullyQualifiedTypeName name="me.max.dao.RequestDAOImpl"/>
-    <fullyQualifiedTypeName name="me.max.util.ConnectionUtil"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="javax.ws.rs.core.MediaType"/>
     <fullyQualifiedTypeName name="me.max.models.ProcessRequest"/>
     <fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+    <fullyQualifiedTypeName name="me.max.util.ConnectionUtil"/>
+    <fullyQualifiedTypeName name="me.max.models.UpdateRequest"/>
 </qualifiedTypeNameHistroy>

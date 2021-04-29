@@ -1,5 +1,0 @@
-package me.max.dao;
-
-public class LoginDAOImpl {
-	
-}

@@ -30,7 +30,7 @@ function getPendingRequests() {
 	}
 	$.ajax(settings).done(response => {
 		//Clean Display area once content can be loaded
-		$('').remove();
+		$('.load').remove();
 
 		response.forEach(element => {
 			//add approve/decline buttons if appropriate
@@ -136,7 +136,7 @@ function getResolvedRequests(...types) {
 	})
 }
 
-//Onclick for pending tab
+//Onclick for employees tab
 function getAllEmployees() {
 	//Store employee data for quicker searches
 	let employees = [];

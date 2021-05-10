@@ -2,16 +2,17 @@
 
 ## Description
 
-A full stack expense reimbursement system buit around a Java Maven project, connect to a PostgreSQL Database using JDBC. A RESTful layer of controller classes created with JAX-RS transfer data to a dynamic web-based front-end built using JSP files. connected by Servlets. JavaScript enables dynamic user interaction and data display.
+A full stack expense reimbursement system buit around a Java Maven project, connected to a PostgreSQL Database using JDBC. A RESTful layer of controller classes created with JAX-RS transfer data to a dynamic web-based front-end built using JSP files, with routing handled by Servlets. JavaScript enables dynamic user interaction and data display.
 
 ## Table of Contents
+
 *Description
 *Installation
 *Usage
 *License
 *Contributing
 *Tests
-*Questions
+\*Questions
 
 ## Installation
 

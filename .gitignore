@@ -5,6 +5,8 @@
 /APP/ExpenseReimbursementSystem/.project
 /APP/ExpenseReimbursementSystem/Target/
 /APP/Servers
-/APP/.metadata/
+/APP/.metadata
+./APP/ERS/.*
 .vscode
+.DS_Store
 .*;
